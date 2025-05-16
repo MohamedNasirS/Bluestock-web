@@ -7,6 +7,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import Index from "./pages/Index";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import IPOManagement from "./pages/IPOManagement";
 import IPOSubscription from "./pages/IPOSubscription";
@@ -37,6 +39,8 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
+      <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />} />
+      <Route path="/forgot-password" element={isAuthenticated ? <Navigate to="/dashboard" /> : <ForgotPassword />} />
       <Route path="/dashboard" element={
         <ProtectedRoute>
           <DashboardLayout />
