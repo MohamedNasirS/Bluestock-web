@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -11,7 +11,10 @@ import {
   Bell,
   Menu,
   X,
+  LogOut,
 } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 
 const sidebarItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
@@ -25,6 +28,18 @@ const sidebarItems = [
 const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const location = useLocation();
+  const { logout, user } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleLogout = () => {
+    logout();
+    toast({
+      title: "Logged out",
+      description: "You have been logged out successfully.",
+    });
+    navigate('/login');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -37,7 +52,7 @@ const DashboardLayout = () => {
       >
         <div className="flex items-center justify-between p-4">
           {isSidebarOpen && (
-            <span className="text-xl font-bold text-purple-600">IPO Insight</span>
+            <span className="text-xl font-bold text-gradient bg-gradient-to-r from-purple-600 to-blue-500">IPO Insight</span>
           )}
           <Button
             variant="ghost"
@@ -64,6 +79,21 @@ const DashboardLayout = () => {
             </Link>
           ))}
         </nav>
+
+        {/* Logout button */}
+        <div className="absolute bottom-8 w-full px-4">
+          <Button
+            variant="outline"
+            className={cn(
+              "w-full justify-start text-gray-600 hover:text-red-600 hover:bg-red-50",
+              !isSidebarOpen && "justify-center"
+            )}
+            onClick={handleLogout}
+          >
+            <LogOut size={20} />
+            {isSidebarOpen && <span className="ml-2">Logout</span>}
+          </Button>
+        </div>
       </aside>
 
       {/* Main content */}
@@ -73,6 +103,21 @@ const DashboardLayout = () => {
           isSidebarOpen ? "ml-64" : "ml-20"
         )}
       >
+        {/* User info in header */}
+        <div className="bg-white border-b p-4 flex justify-between items-center">
+          <h1 className="text-xl font-semibold">BlueStock Admin</h1>
+          {user && (
+            <div className="flex items-center">
+              <div className="mr-4 text-right">
+                <p className="font-medium">{user.name}</p>
+                <p className="text-sm text-gray-500">{user.email}</p>
+              </div>
+              <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold">
+                {user.name.charAt(0).toUpperCase()}
+              </div>
+            </div>
+          )}
+        </div>
         <div className="p-8">
           <Outlet />
         </div>
