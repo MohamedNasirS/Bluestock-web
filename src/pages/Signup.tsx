@@ -8,6 +8,8 @@ import { Label } from "@/components/ui/label";
 import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { UserPlus, ArrowLeft } from "lucide-react";
+import logo  from "../Assets/logo/logo.png";
+import {FcGoogle} from "react-icons/fc";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -65,8 +67,7 @@ const Signup = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-50 to-blue-50">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-gradient">BlueStock</h1>
-        <p className="text-gray-600 mt-2">Your premium stock market portal</p>
+      <img src={logo} alt="Bluestock Logo" className="mx-auto h-10 w-auto mb-2"/>
       </div>
       
       <Card className="w-[400px] shadow-lg border-purple-100">
@@ -122,6 +123,13 @@ const Signup = () => {
             </div>
           </CardContent>
           <CardFooter className="flex-col space-y-4">
+            {/*Google LOgin Outside the Card*/}
+                        <div className="mt-1 text-center">
+                          <button className="flex items-center justify-center gap-2 px-2 py-2 mx-auto border-gray-300 rounded-md shadow-sm hover:bg-gray-100 transition text-gray-700">
+                            <FcGoogle className="text-xl" />
+                            <span>Or login with Google</span>
+                          </button>
+                        </div>
             <Button 
               type="submit" 
               className="w-full bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600"

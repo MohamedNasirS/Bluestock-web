@@ -2,6 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Phone, Mail, Clock, MapPin, PlayCircle } from "lucide-react";
+import logo  from "../Assets/logo/logo.png";
+import careers from "../Assets/Website Assest/careers.png";
+import {Apple, Play} from "lucide-react";
+import appqr from "../Assets/Website Assest/app-qr.png";
+
 
 const Index = () => {
   return (
@@ -9,7 +14,11 @@ const Index = () => {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 backdrop-blur-lg bg-white/50 border-b">
         <div className="container mx-auto flex justify-between items-center p-6">
-          <div className="text-2xl font-bold text-purple-600">Bluestock Fintech</div>
+          <img
+           src={logo} 
+           alt="Bluestock Logo"
+           className="h-8 w-auto" 
+           />
           <div className="space-x-4">
             <Button variant="ghost" asChild>
               <Link to="/login">Login</Link>
@@ -20,9 +29,8 @@ const Index = () => {
           </div>
         </div>
       </nav>
-      
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-20 text-center">
+      <section className="container mx-auto px-6 py-10 text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
           Become a Better Investor & Trader
         </h1>
@@ -39,6 +47,9 @@ const Index = () => {
           </Button>
         </div>
       </section>
+      <div className="my-3 flex justify-center">
+        <img src={careers} alt="Hero-poster" className="scale-30 max-w-3xl " />
+      </div>
 
       {/* Features Section */}
       <section className="bg-white py-20">
@@ -66,6 +77,38 @@ const Index = () => {
           </p>
         </div>
       </section>
+{/* Download  Section */}
+<section className="container mx-auto px-7  pt-20 text-center flex flex-col items-center gap-8 max-w-md mx-auto">
+  <h2 className="text-3xl font-bold ">Download the App</h2>
+  <p className="text-sm-600 text-muted-foreground">
+    Get our app from the store or scan the QR code to download.
+  </p>
+
+  <div className="flex gap-4 flex-wrap justify-center">
+    <a href="https://apps.apple.com/your-app-link" target="_blank" rel="noopener noreferrer">
+      <Button variant="outline" className="gap-2 t">
+        <Apple size={20} />
+        App Store
+      </Button>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=your.app.id" target="_blank" rel="noopener noreferrer">
+      <Button variant="outline" className="gap-2">
+        <Play size={20} />
+        Google Play
+      </Button>
+    </a>
+  </div>
+
+  <div className="mt-4">
+    <img
+      src={appqr}
+      alt="QR code to download app"
+      className="w-32 h-32 rounded-lg shadow-md"
+    />
+    <p className="text-xs text-muted-foreground mt-2">Scan to download</p>
+  </div>
+</section>
+
 
       {/* Services Section */}
       <section className="py-20 bg-white">

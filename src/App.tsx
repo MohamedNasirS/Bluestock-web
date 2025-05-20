@@ -41,11 +41,7 @@ const AppRoutes = () => {
       <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
       <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />} />
       <Route path="/forgot-password" element={isAuthenticated ? <Navigate to="/dashboard" /> : <ForgotPassword />} />
-      <Route path="/dashboard" element={
-        <ProtectedRoute>
-          <DashboardLayout />
-        </ProtectedRoute>
-      }>
+      <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="ipo-management" element={<IPOManagement />} />
         <Route path="ipo-subscription" element={<IPOSubscription />} />
