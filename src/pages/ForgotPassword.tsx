@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, ArrowLeft } from "lucide-react";
+import logo  from "../Assets/logo/logo.png";
+
 
 const ForgotPassword = () => {
   const { toast } = useToast();
@@ -42,8 +44,9 @@ const ForgotPassword = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-50 to-blue-50">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-gradient">BlueStock</h1>
-        <p className="text-gray-600 mt-2">Your premium stock market portal</p>
+      <img src={logo} alt="Bluestock Logo" className="mx-auto h-10 w-auto mb-4"/>
+       
+         <p className="text-gray-600 mt-2">Your premium stock market portal</p>
       </div>
       
       <Card className="w-[380px] shadow-lg border-purple-100">

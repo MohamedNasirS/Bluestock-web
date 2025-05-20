@@ -176,7 +176,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-9">
         <h1 className="text-3xl font-bold">Upcoming IPO | Dashboard</h1>
         <Button 
           className="bg-purple-600 hover:bg-purple-700"

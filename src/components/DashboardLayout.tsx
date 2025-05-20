@@ -24,7 +24,7 @@ const sidebarItems = [
   { icon: Settings, label: "Settings", path: "/dashboard/settings" },
   { icon: HelpCircle, label: "Help", path: "/dashboard/help" },
 ];
-
+ 
 const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const location = useLocation();
